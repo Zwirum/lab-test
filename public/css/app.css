@@ -1,0 +1,140 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *::after, *::before {
+  box-sizing: inherit;
+}
+
+body {
+  background-color: #C4C4C4;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+}
+
+.content {
+  margin: 0 auto;
+  max-width: 968px;
+  padding: 30px 15px;
+}
+
+.menu {
+  text-align: center;
+  padding: 10px 0px;
+}
+
+.menu_link {
+  text-decoration: none;
+  color: #000;
+  font-size: 24px;
+  line-height: 24px;
+  position: relative;
+  transition: 0.3s;
+}
+.menu_link + .menu_link {
+  margin-left: 15px;
+}
+.menu_link::before {
+  position: absolute;
+  content: "";
+  height: 2px;
+  width: 0;
+  background-color: #000;
+  bottom: 0;
+  left: 0;
+  transition: 0.3s;
+}
+.menu_link:hover {
+  letter-spacing: 1px;
+}
+.menu_link:hover::before {
+  width: 100%;
+}
+
+.text_18 {
+  font-size: 18px;
+  line-height: 21px;
+}
+
+.text_12 {
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.text_16 {
+  font-size: 16px;
+  line-height: 19px;
+}
+
+/* INFO page start */
+.first-exercise {
+  position: relative;
+}
+.first-exercise::before {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 100%;
+  background: repeating-linear-gradient(to right, red 10px, blue 10px, red 50px);
+  z-index: 1;
+  transition: 0.5s;
+}
+.first-exercise.loading::before {
+  width: 100%;
+  transition: 0.5s;
+}
+
+.block {
+  white-space: nowrap;
+  padding: 10px;
+  background-color: #DAC1AE;
+  box-shadow: 0px 0px 10px 1px rgba(173, 169, 165, 0.5);
+  border-radius: 10px;
+  display: inline-block;
+}
+.block.temperature {
+  max-width: 230px;
+  width: 100%;
+  padding: 20px 27px 13px;
+  border-radius: 23px;
+}
+.block.btn-refresh {
+  cursor: pointer;
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+}
+.block.currency {
+  max-width: 148px;
+  width: 100%;
+  padding: 7px 7px 5px;
+  text-align: center;
+}
+.block .currency_info {
+  padding: 15px 0;
+}
+
+.block_line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.block_line + .block_line {
+  margin-top: 5px;
+}
+
+.currency_wrapper {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 0;
+}
+.currency_wrapper li {
+  list-style: none;
+}
+
+/* INFO page end */

@@ -1,1 +1,76 @@
-//
+@import 'global';
+
+/* INFO page start */
+
+.first-exercise{
+    position: relative;
+    &::before{
+        position: absolute;
+        content: '';
+        width: 0;
+        height: 100%;
+        background: repeating-linear-gradient(to right, red 10px, blue 10px, red 50px);
+        z-index: 1;
+        transition: .5s;
+    }
+    &.loading{
+        &::before{
+            width: 100%;
+            transition: .5s;
+        }
+    }
+}
+
+.block{
+    white-space: nowrap;
+    padding: 10px;
+    background-color: #DAC1AE;
+    box-shadow: 0px 0px 10px 1px rgba(173, 169, 165, 0.5);
+    border-radius: 10px;
+    display: inline-block;
+    &.temperature{
+        max-width: 230px;
+        width: 100%;
+        padding: 20px 27px 13px;
+        border-radius: 23px;
+    }
+    &.btn-refresh{
+        cursor: pointer;
+        position: absolute;
+        content: '';
+        top: 0;
+        right: 0;
+    }
+    &.currency{
+        max-width: 148px;
+        width: 100%;
+        padding: 7px 7px 5px;
+        text-align: center;
+    }
+
+    .currency_info{
+        padding: 15px 0;
+    }
+}
+
+.block_line{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    & + & {
+        margin-top: 5px;
+    }
+}
+
+.currency_wrapper{
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 0;
+    li{
+        list-style: none;
+    }
+}
+
+/* INFO page end */
+
