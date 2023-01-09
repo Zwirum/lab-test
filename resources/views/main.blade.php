@@ -14,8 +14,8 @@
     </head>
     <body>
         <nav class="menu">
-            <a class="menu_link" href="/">Info</a>
-            <a class="menu_link" href="/news">News</a>
+            <a class="menu_link" href="{{ route('info') }}">Info</a>
+            <a class="menu_link" href="{{ route('news') }}">News</a>
             <a class="menu_link" href="#">Life</a>
         </nav>
 
@@ -23,7 +23,6 @@
             @yield('content')
         </div>
 
-        <script src="{{ asset("/js/app.js") }}"></script>
         @yield('scripts')
     </body>
 </html>

@@ -6,13 +6,26 @@ html {
     box-sizing: inherit;
 }
 
-body{
-    background-color: #C4C4C4;
+*,
+body,
+*::after, *::before{
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 14px;
+}
+
+body{
+    background-color: #C4C4C4;
+}
+
+a{
+    text-decoration: none;
+    color: #000;
+}
+ul{
+    padding: 0;
 }
 
 .content{
@@ -51,6 +64,22 @@ body{
         &::before{
             width: 100%;
         }
+    }
+}
+
+.btn{
+    cursor: pointer;
+    width: 130px;
+    height: 100%;
+    font-size: 16px;
+    line-height: 18px;
+    background-color: #666666;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    transition: .3s;
+    &:hover{
+        background-color: #4F4E4EFF;
     }
 }
 

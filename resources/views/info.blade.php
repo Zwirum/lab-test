@@ -44,4 +44,8 @@
             <img src="{{ asset("/img/refresh.svg") }}" alt="refresh">
         </div>
     </section>
+
+    @section('scripts')
+        <script src="{{ asset("/js/app.js") }}"></script>
+    @endsection
 @endSection

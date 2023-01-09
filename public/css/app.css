@@ -6,13 +6,27 @@ html {
   box-sizing: inherit;
 }
 
-body {
-  background-color: #C4C4C4;
+*,
+body,
+*::after, *::before {
   font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 14px;
+}
+
+body {
+  background-color: #C4C4C4;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+ul {
+  padding: 0;
 }
 
 .content {
@@ -54,6 +68,22 @@ body {
   width: 100%;
 }
 
+.btn {
+  cursor: pointer;
+  width: 130px;
+  height: 100%;
+  font-size: 16px;
+  line-height: 18px;
+  background-color: #666666;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  transition: 0.3s;
+}
+.btn:hover {
+  background-color: #4f4e4e;
+}
+
 .text_18 {
   font-size: 18px;
   line-height: 21px;
@@ -88,7 +118,6 @@ body {
 }
 
 .block {
-  white-space: nowrap;
   padding: 10px;
   background-color: #DAC1AE;
   box-shadow: 0px 0px 10px 1px rgba(173, 169, 165, 0.5);
@@ -96,6 +125,7 @@ body {
   display: inline-block;
 }
 .block.temperature {
+  white-space: nowrap;
   max-width: 230px;
   width: 100%;
   padding: 20px 27px 13px;
@@ -138,3 +168,88 @@ body {
 }
 
 /* INFO page end */
+/* NEWS page start */
+.news-search {
+  height: 40px;
+  display: flex;
+  box-shadow: 0px 0px 10px 1px rgba(173, 169, 165, 0.7);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.news-search input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  text-decoration: none;
+  padding: 5px;
+}
+
+.news-form_discr {
+  margin: 5px 0;
+  opacity: 0.5;
+}
+
+.btn-action {
+  background-color: #7c5050;
+}
+
+.news-item {
+  margin-top: 40px;
+  text-align: center;
+  padding-bottom: 50px;
+}
+
+.news-item_title {
+  font-size: 35px;
+  line-height: 35px;
+}
+
+.news-item_extra-info {
+  margin: 0 40px;
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.news-item_extra-info .info {
+  text-align: left;
+  opacity: 0.7;
+}
+
+.news-item_text {
+  word-break: break-all;
+}
+
+.news-list .block {
+  display: block;
+}
+.news-list .block:nth-child(even) {
+  box-shadow: none;
+  background-color: transparent;
+}
+
+.news-list_item {
+  display: flex;
+}
+.news-list_item span {
+  font-size: 16px;
+  line-height: 16px;
+}
+.news-list_item .item_info {
+  display: flex;
+}
+.news-list_item .item_info .item_info_id,
+.news-list_item .item_info .item_info_title {
+  margin-right: 20px;
+}
+.news-list_item .item_anons {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.create-form {
+  margin-top: 40px;
+}
+
+/* NEWS page end */
