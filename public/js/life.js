@@ -17287,35 +17287,46 @@ var DEFAULT_COLS = 3,
 var _getLifeNeighbourhoods = /*#__PURE__*/new WeakSet();
 var _renderLife = /*#__PURE__*/new WeakSet();
 var _endGame = /*#__PURE__*/new WeakSet();
+var _arrClon = /*#__PURE__*/new WeakSet();
 var Life = /*#__PURE__*/function () {
   function Life() {
-    var cols = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : DEFAULT_COLS;
-    var rows = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : DEFAULT_ROWS;
     _classCallCheck(this, Life);
+    _classPrivateMethodInitSpec(this, _arrClon);
     _classPrivateMethodInitSpec(this, _endGame);
     _classPrivateMethodInitSpec(this, _renderLife);
     _classPrivateMethodInitSpec(this, _getLifeNeighbourhoods);
-    this.cols = cols || cols < 3 ? cols : DEFAULT_COLS;
-    this.rows = rows || rows < 3 ? rows : DEFAULT_ROWS;
+    this.cols = DEFAULT_COLS;
+    this.rows = DEFAULT_ROWS;
     this.place = [];
     this.step = 0;
     this.interval = null;
-    for (var row = 0; row < this.rows; row++) {
-      var arr = [];
-      for (var col = 0; col < this.cols; col++) {
-        arr.push(random(0, 1));
-      }
-      this.place.push(arr);
-    }
   }
   _createClass(Life, [{
+    key: "init",
+    value: function init(cols, rows) {
+      $('#life').empty();
+      clearInterval(this.interval);
+      this.cols = cols && cols > 2 ? cols : this.cols;
+      this.rows = rows && rows > 2 ? rows : this.rows;
+      this.place = [];
+      this.step = 0;
+      this.interval = null;
+      for (var row = 0; row < this.rows; row++) {
+        var arr = [];
+        for (var col = 0; col < this.cols; col++) {
+          arr.push(Math.floor(Math.random() * 2));
+        }
+        this.place.push(arr);
+      }
+      this.start();
+    }
+  }, {
     key: "start",
     value: function start() {
       var _this = this;
-      $('#life').empty();
       this.interval = setInterval(function () {
         var lifeCount = 0,
-          place = JSON.parse(JSON.stringify(_this.place));
+          nextStep = _classPrivateMethodGet(_this, _arrClon, _arrClon2).call(_this, _this.place);
         _this.step++;
         _classPrivateMethodGet(_this, _renderLife, _renderLife2).call(_this);
         for (var row = 0; row < _this.rows; row++) {
@@ -17326,28 +17337,29 @@ var Life = /*#__PURE__*/function () {
               lifeCount++;
             }
             if (isLife && !(count === 2 || count === 3)) {
-              _this.place[row][col] = 0;
+              nextStep[row][col] = 0;
             }
             if (!isLife && count === 3) {
-              _this.place[row][col] = 1;
+              nextStep[row][col] = 1;
             }
           }
         }
-        if (lifeCount === 0 || place.toString() === _this.place.toString()) {
+        if (lifeCount === 0 || nextStep.toString() === _this.place.toString()) {
           _classPrivateMethodGet(_this, _endGame, _endGame2).call(_this);
         }
-      }, 1000);
+        _this.place = _classPrivateMethodGet(_this, _arrClon, _arrClon2).call(_this, nextStep);
+      }, 3000);
     }
   }]);
   return Life;
 }();
-function _getLifeNeighbourhoods2() {
-  var row = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-  var col = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+function _getLifeNeighbourhoods2(row, col) {
   var count = 0;
   for (var i = -1; i <= 1; i++) {
     for (var j = -1; j <= 1; j++) {
-      if (row !== row + i && col !== col + j && this.place[row + i] !== undefined && this.place[row + i][col + j] !== undefined && this.place[row + i][col + j] === 1) {
+      var col1 = col + j,
+        row1 = row + i;
+      if (row1 >= 0 && col1 >= 0 && row + '-' + col != row1 + '-' + col1 && this.place[row1] != undefined && this.place[row1][col1] != undefined && this.place[row1][col1] === 1) {
         count++;
       }
     }
@@ -17368,10 +17380,17 @@ function _endGame2() {
   $('#life').append('<hr><br>END GAME, M**FAKA');
   clearInterval(this.interval);
 }
+function _arrClon2(arr) {
+  var clone = [];
+  $.each(arr, function (index, value) {
+    clone.push(JSON.parse(JSON.stringify(value)));
+  });
+  return clone;
+}
 $(function () {
+  var life = new Life();
   $('#btn').on('click', function () {
-    var life = new Life($('#cols').val(), $('#rows').val());
-    life.start();
+    life.init($('#cols').val(), $('#rows').val());
   });
 });
 })();
