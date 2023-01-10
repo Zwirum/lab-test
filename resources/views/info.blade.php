@@ -46,6 +46,6 @@
     </section>
 
     @section('scripts')
-        <script src="{{ asset("/js/app.js") }}"></script>
+        <script src="{{ asset("/js/info.js") }}"></script>
     @endsection
 @endSection

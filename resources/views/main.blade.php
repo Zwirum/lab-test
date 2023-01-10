@@ -16,13 +16,14 @@
         <nav class="menu">
             <a class="menu_link" href="{{ route('info') }}">Info</a>
             <a class="menu_link" href="{{ route('news') }}">News</a>
-            <a class="menu_link" href="#">Life</a>
+            <a class="menu_link" href="{{ route('life') }}">Life</a>
         </nav>
 
         <div class="content">
             @yield('content')
         </div>
 
+        <script src="{{ asset("/js/app.js") }}"></script>
         @yield('scripts')
     </body>
 </html>
